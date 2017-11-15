@@ -13,7 +13,7 @@ ITKPolarTransform
 Overview
 --------
 
-This is a module for the `Insight Toolkit (ITK) <http://itk.org>`_
+This is a module for the `Insight Toolkit (ITK) <https://www.itk.org>`_
 to transform from cartesian to polar coordinate systems and back.
 
 For more information, see the `Insight Journal article <http://hdl.handle.net/1926/342>`_::
