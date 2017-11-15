@@ -21,7 +21,7 @@ namespace itk
  * \f[			x_1 = r cos( \alpha ) \f]
  * \f[			x_2 = r sin( \alpha ) \f]
  * \f[			x_n = x_n, \mbox{ n>=2 } \f]
- * 
+ *
  *
  * \par
  * Center of the polar transform is a center of coordinate system < 0, 0 >.
@@ -63,37 +63,40 @@ public:
   /** Standard Jacobian container. */
   typedef typename Superclass::JacobianType JacobianType;
 
+  /** Standard parameters container. */
+  typedef typename Superclass::ParametersType ParametersType;
+
   /** Standard vector type for this class. */
-  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputVectorType;
-  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputVectorType;
 
   /** Standard covariant vector type for this class. */
-  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputCovariantVectorType;
-  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputCovariantVectorType;
 
   /** Standard vnl_vector type for this class. */
-  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputVnlVectorType;
-  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputVnlVectorType;
 
   /** Standard coordinate point type for this class. */
-  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputPointType;
-  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputPointType;
 
   /** Method to transform a point.
-   * This method transforms first two dimensions of a point from polar 
+   * This method transforms first two dimensions of a point from polar
    * coordinates <alpha,radius> to cartesian coordinates.
    */
   OutputPointType     TransformPoint(const InputPointType  &point ) const;
 
-  /** Method to transform a vector - not applicable for this type of 
+  /** Method to transform a vector - not applicable for this type of
       transform. */
   virtual OutputVectorType TransformVector(const InputVectorType &) const
     {
@@ -109,7 +112,7 @@ public:
       return OutputVnlVectorType();
     }
 
-  /** Method to transform a CovariantVector - not applicable for this type of 
+  /** Method to transform a CovariantVector - not applicable for this type of
       transform */
   virtual OutputCovariantVectorType TransformCovariantVector(
     const InputCovariantVectorType &) const
@@ -118,14 +121,16 @@ public:
       return OutputCovariantVectorType();
     }
 
-  /** Compute the Jacobian Matrix of the transformation at one point - not 
+  /** Compute the Jacobian Matrix of the transformation at one point - not
       applicable for this type of transform */
   virtual const JacobianType & GetJacobian(const InputPointType  &point ) const
 		{
 			itkExceptionMacro(<< "Method not applicable for polar transform. ");
-			return m_Jacobian;
+			return this->m_Jacobian;
 		}
+  void SetParameters(const ParametersType & parameters){}
 
+  void SetFixedParameters(const ParametersType &){}
 protected:
   PolarToCartesianTransform();
   ~PolarToCartesianTransform();

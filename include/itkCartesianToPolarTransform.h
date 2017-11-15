@@ -15,12 +15,12 @@ namespace itk
 /** \brief Polar transformation of a vector space (e.g. space coordinates).
  *
  * Transforms first two coordinates form cartesian coordinates  to polar
- * coordinates <alpha,radius>. Other dimensions are left unchanges. In fact 
+ * coordinates <alpha,radius>. Other dimensions are left unchanges. In fact
  * this is generalized cylindric transform:
  * \f[			r = \sqrt{ x_0^2 + x_1^2 } \f]
- * \f[			\alpha = \left\{ \begin{array}{ll} 
+ * \f[			\alpha = \left\{ \begin{array}{ll}
  * arccos( \frac{x_0}{r} ) & \mbox{$x_1 >= 0$} \\
- * \mbox{2 \pi} - arccos( \frac{x_0}{r} ) & \mbox{$x_1 < 0$} 
+ * \mbox{2 \pi} - arccos( \frac{x_0}{r} ) & \mbox{$x_1 < 0$}
  * \end{array}\right. \f]
  * \f[			x_n = x_n, \mbox{n >= 2} \f]
  *
@@ -63,32 +63,35 @@ public:
   /** Standard Jacobian container. */
   typedef typename Superclass::JacobianType JacobianType;
 
+  /** Standard parameters container. */
+  typedef typename Superclass::ParametersType ParametersType;
+
   /** Standard vector type for this class. */
-  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputVectorType;
-  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Vector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputVectorType;
 
   /** Standard covariant vector type for this class. */
-  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputCovariantVectorType;
-  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef CovariantVector<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputCovariantVectorType;
 
   /** Standard vnl_vector type for this class. */
-  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputVnlVectorType;
-  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef vnl_vector_fixed<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputVnlVectorType;
 
   /** Standard coordinate point type for this class. */
-  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   InputPointType;
-  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)> 
+  typedef Point<TScalarType, itkGetStaticConstMacro(SpaceDimension)>
                                                   OutputPointType;
 
   /** Method to transform a point.
-   * This method transforms first two dimensions of a point from cartesian 
+   * This method transforms first two dimensions of a point from cartesian
    * coordinates to polar coordinates <alpha,radius>.
    */
   OutputPointType     TransformPoint(const InputPointType  &point ) const;
@@ -100,7 +103,7 @@ public:
       return OutputVectorType();
     }
 
-  /** Method to transform a vnl_vector - not applicable for this type of 
+  /** Method to transform a vnl_vector - not applicable for this type of
       transform. */
   virtual OutputVnlVectorType TransformVector(const InputVnlVectorType &) const
     {
@@ -108,7 +111,7 @@ public:
       return OutputVnlVectorType();
     }
 
-  /** Method to transform a CovariantVector - not applicable for this type of 
+  /** Method to transform a CovariantVector - not applicable for this type of
       transform. */
   virtual OutputCovariantVectorType TransformCovariantVector(
     const InputCovariantVectorType &) const
@@ -117,13 +120,17 @@ public:
       return OutputCovariantVectorType();
     }
 
-  /** Compute the Jacobian Matrix of the transformation at one point - not 
+  /** Compute the Jacobian Matrix of the transformation at one point - not
       applicable for this type of transform. */
   virtual const JacobianType & GetJacobian(const InputPointType  &point ) const
 		{
 			itkExceptionMacro(<< "Method not applicable for polar transform. ");
-			return m_Jacobian;
+			return this->m_Jacobian;
 		}
+
+  void SetParameters(const ParametersType & parameters){}
+
+  void SetFixedParameters(const ParametersType &){}
 
 protected:
   CartesianToPolarTransform();
