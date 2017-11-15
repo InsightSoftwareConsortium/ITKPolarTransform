@@ -1,0 +1,9 @@
+\begin{thebibliography}{1}
+
+\bibitem{ITKSoftwareGuideSecondEdition}
+L.~Ibanez, W.~Schroeder, L.~Ng, and J.~Cates.
+\newblock {\em The {ITK} {S}oftware {G}uide}.
+\newblock Kitware, Inc. ISBN 1-930934-15-7,
+  http://www.itk.org/ItkSoftwareGuide.pdf, second edition, 2005.
+
+\end{thebibliography}

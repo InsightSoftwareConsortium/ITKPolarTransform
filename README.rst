@@ -10,6 +10,35 @@ ITKPolarTransform
 .. image:: https://img.shields.io/appveyor/ci/itkrobot/itkpolartransform.svg
     :target: https://ci.appveyor.com/project/itkrobot/itkpolartransform
 
-This module contains ITK Transform classes to go from cartesian to polar coordinate systems and back.
+Overview
+--------
 
-ITK is an open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis. Developed through extreme programming methodologies, ITK employs leading-edge algorithms for registering and segmenting multidimensional scientific images.
+This is a module for the `Insight Toolkit (ITK) <http://itk.org>`_
+to transform from cartesian to polar coordinate systems and back.
+
+For more information, see the `Insight Journal article <http://hdl.handle.net/1926/342>`_::
+
+  Bican J.
+  Polar Transforms for ITK
+  The Insight Journal. July-December. 2006.
+  http://hdl.handle.net/1926/342
+  http://insight-journal.org/browse/publication/130
+
+Installation
+------------
+
+Python
+^^^^^^
+
+Binary `Python packages <https://pypi.python.org/pypi/itk-polartransform>`_
+are available for Linux, macOS, and Windows. They can be installed with::
+
+  python -m pip install --upgrade pip
+  python -m pip install itk-polartransform
+
+
+License
+-------
+
+This software is distributed under the Apache 2.0 license. Please see
+the *LICENSE* file for details.

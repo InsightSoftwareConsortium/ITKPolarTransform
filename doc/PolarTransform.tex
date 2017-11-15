@@ -1,0 +1,98 @@
+
+
+\documentclass{InsightArticle}
+\usepackage[dvips,
+bookmarks,
+bookmarksopen,
+backref,
+colorlinks,linkcolor={blue},citecolor={blue},urlcolor={blue},
+]{hyperref}
+% to be able to use options in graphics
+\usepackage{graphicx}
+% for pseudo code
+\usepackage{listings}
+% subfigures
+\usepackage{subfigure}
+
+
+
+\title{Polar Transforms for ITK}
+\release{1.1}
+
+\author{Jakub Bican$^{1}$}
+\authoraddress{$^{1}$jakub.bican@matfyz.cz, Department of Image Processing, Institute of Information Theory and Automation, Academy of Sciences of the Czech Republic}
+
+\begin{document}
+\maketitle
+
+
+\ifhtml
+\chapter*{Front Matter\label{front}}
+\fi
+
+\begin{abstract}
+\noindent
+
+Polar transform is a geometric transform, that transforms points form cartesian coordinates to so-called polar coordinates. In case of 2D space, a point in polar coordinate system is addressed by radius and angle. In image processing, polar transform is usually used to convert rotations around the origin of polar coordinate system to translations.
+
+This document describes the implementation of forward and inverse polar transforms in two very simple classes for the Insight Toolkit ITK \url{www.itk.org}. The paper is accompanied with the source and testing code for purposes of testing of this implementation.
+
+\end{abstract}
+
+
+\section{Polar Transform}
+
+Forward (from cartesian to polar coordinate system) and inverse (from polar to cartesian coordinate system) polar transforms  are defined on 2D space by following equations:
+\begin{equation}
+\begin{array}{ll}
+r = & \sqrt{ x^2 + y^2 } \\
+\alpha = & \left\{ \begin{array}{ll}
+arccos( \frac{x}{r} ) & y \geq 0\\
+2 \pi - arccos( \frac{x}{r} ) & y < 0
+\end{array} \right.
+\end{array}
+\end{equation}
+Point $[x,y] \in\mathbf{R}^2$ is transformed to point $[r,\alpha]\in[0,\infinity)\times[0,360)$.
+\begin{equation}
+\begin{array}{ll}
+x = r \cos(\alpha) \\
+y = r \sin(\alpha)
+\end{array}
+\end{equation}
+Point $[r,\alpha]$ is transformed to point $[x,y]$.
+
+
+
+\section{Implementation and usage}
+
+Polar transform is implemented in 2 classes: \code{CartesianToPolarTransform} for forward transform and \code{PolarToCartesianTransform} for inverse transform. Both classes are templated over the scalar type of points, that will be transformed, and over number of dimensions.
+
+The dimension must be at least 2 to be able to compute above equations. If the dimension is greater than 2, the first 2 dimensions ($x_1$ and $x_2$) are transformed to polar coordinates and the other are left unchanged:
+\begin{equation}
+x_c[i] = x_p[i] \quad \textrm{for all } x>2
+\end{equation}
+
+In case of 3 dimensions, this leads to cylindrical transform, where the axis of the cylinder is the $z$ axis of the cartesian coordinate system. In case of more dimensional space, the transform leads to multidimensional cylinder. The cylinder is always oriented so that the first two cartesian coordinates are transformed to radius and angle. To change the orientation of the cylinder in the input image, it is necessary to inversely reorient the image.
+
+Very important is the position of the origin of the polar coordinate system in cartesian coordinate system. By the above equations, it is stated, that the polar origin is located in the cartesian origin. To change the position of polar origin in input image, you have to inversely change the origin of the input image.
+
+Due to the nature of polar transform, these classes are able to transform only \emph{points}. They are not able to transform neither \emph{vectors} nor \emph{covariant vectors}.
+
+
+\appendix
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Insert the bibliography using BibTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plain}
+
+\bibliography{PolarTransform}
+
+\nocite{ITKSoftwareGuideSecondEdition}
+
+\end{document}
+
