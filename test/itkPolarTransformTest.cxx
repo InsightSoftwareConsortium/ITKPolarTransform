@@ -42,7 +42,7 @@ int itkPolarTransformTest( int, char *[] )
   c[1] = sqrt(3.0);
   p[0] = vnl_math::pi/3.0;
   p[1] = 2;
-  for ( unsigned int i = 2 ; i < Dimension ; ++i )
+  for ( unsigned int i = 2; i < Dimension; ++i )
     {
     c[i] = 3;
     p[i] = c[i];

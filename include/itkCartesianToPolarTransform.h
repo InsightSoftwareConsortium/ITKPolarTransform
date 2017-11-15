@@ -26,17 +26,19 @@
 namespace itk
 {
 
-/** \brief Polar transformation of a vector space (e.g. space coordinates).
+/** \class CartesianToPolarTransform
+ *
+ * \brief Polar transformation of a vector space (e.g. space coordinates).
  *
  * Transforms first two coordinates form cartesian coordinates  to polar
  * coordinates <alpha,radius>. Other dimensions are left unchanges. In fact
  * this is generalized cylindric transform:
- * \f[			r = \sqrt{ x_0^2 + x_1^2 } \f]
- * \f[			\alpha = \left\{ \begin{array}{ll}
+ * \f[          r = \sqrt{ x_0^2 + x_1^2 } \f]
+ * \f[          \alpha = \left\{ \begin{array}{ll}
  * arccos( \frac{x_0}{r} ) & \mbox{$x_1 >= 0$} \\
  * \mbox{2 \pi} - arccos( \frac{x_0}{r} ) & \mbox{$x_1 < 0$}
  * \end{array}\right. \f]
- * \f[			x_n = x_n, \mbox{n >= 2} \f]
+ * \f[          x_n = x_n, \mbox{n >= 2} \f]
  *
  *
  * \par
@@ -47,6 +49,7 @@ namespace itk
  * \author Jakub Bican, Department of Image Processing, Institute of Information Theory and Automation, Academy of Sciences of the Czech Republic.
  *
  * \ingroup Transforms
+ * \ingroup PolarTransform
  */
 template <
     typename TParametersValueType=double,          // Data type for scalars (float or double)
@@ -154,7 +157,7 @@ protected:
   CartesianToPolarTransform();
   virtual ~CartesianToPolarTransform() ITK_OVERRIDE;
 
-	/** Print contents of an CartesianToPolarTransform. */
+  /** Print contents of an CartesianToPolarTransform. */
   void PrintSelf(std::ostream &os, Indent indent) const ITK_OVERRIDE;
 
 private:

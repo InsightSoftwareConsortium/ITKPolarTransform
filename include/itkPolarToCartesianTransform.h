@@ -26,14 +26,16 @@
 namespace itk
 {
 
-/** \brief Polar transformation of a vector space (e.g. space coordinates).
+/** \class PolarToCartesianTransform
+ *
+ * \brief Polar transformation of a vector space (e.g. space coordinates).
  *
  * Transforms first two coordinates form polar space <alpha,radius> to cartesian
  * coordinates. Other dimensions are left unchanges. In fact this is generalized
  * cylindric transform:
- * \f[			x_1 = r cos( \alpha ) \f]
- * \f[			x_2 = r sin( \alpha ) \f]
- * \f[			x_n = x_n, \mbox{ n>=2 } \f]
+ * \f[          x_1 = r cos( \alpha ) \f]
+ * \f[          x_2 = r sin( \alpha ) \f]
+ * \f[          x_n = x_n, \mbox{ n>=2 } \f]
  *
  *
  * \par
@@ -153,7 +155,7 @@ protected:
   PolarToCartesianTransform();
   virtual ~PolarToCartesianTransform() ITK_OVERRIDE;
 
-	/** Print contents of an PolarToCartesianTransform. */
+  /** Print contents of an PolarToCartesianTransform. */
   void PrintSelf(std::ostream &os, Indent indent) const ITK_OVERRIDE;
 
 private:
