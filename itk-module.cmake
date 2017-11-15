@@ -12,14 +12,10 @@ file(READ "${MY_CURRENT_DIR}/README.rst" DOCUMENTATION)
 
 # define the dependencies of the include module and the tests
 itk_module(PolarTransform
-  DEPENDS
-    ITKCommon
-    ITKStatistics
   COMPILE_DEPENDS
-    ITKImageSources
+    ITKTransform
   TEST_DEPENDS
     ITKTestKernel
-    ITKMetaIO
   DESCRIPTION
     "${DOCUMENTATION}"
   EXCLUDE_FROM_DEFAULT
