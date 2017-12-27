@@ -136,6 +136,8 @@ public:
     return typename Superclass::OutputVectorPixelType();
     }
 
+  using Superclass::TransformVector;
+
   /** Method to transform a CovariantVector - not applicable for this type of transform. */
   OutputCovariantVectorType TransformCovariantVector(
     const InputCovariantVectorType &) const ITK_OVERRIDE
@@ -143,6 +145,8 @@ public:
     itkExceptionMacro(<< "Method not applicable for this type of transform.");
     return OutputCovariantVectorType();
     }
+
+  using Superclass::TransformCovariantVector;
 
   void ComputeJacobianWithRespectToParameters( const InputPointType &, JacobianType & ) const ITK_OVERRIDE
     {
