@@ -143,7 +143,7 @@ public:
     itkExceptionMacro(<< "Method not implemented yet.");
     }
 
-  void SetParameters(const ParametersType & parameters) ITK_OVERRIDE {}
+  void SetParameters(const ParametersType &) ITK_OVERRIDE {}
 
   void SetFixedParameters(const ParametersType &) ITK_OVERRIDE {}
 
