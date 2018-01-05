@@ -37,6 +37,16 @@ are available for Linux, macOS, and Windows. They can be installed with::
   python -m pip install itk-polartransform
 
 
+C++
+^^^
+
+Since ITK 5.0.0, this module is available in the ITK source tree as a Remote
+module. To enable it, set::
+
+  Module_PolarTransform:BOOL=ON
+
+in ITK's CMake build configuration.
+
 License
 -------
 
