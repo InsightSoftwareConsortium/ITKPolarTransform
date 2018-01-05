@@ -1,14 +1,20 @@
 ITKPolarTransform
-=================================
+=================
 
-.. image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform.svg?style=shield
+.. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform.svg?style=shield
     :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform
 
-.. image:: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform.svg?branch=master
+.. |TravisCI| image:: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform.svg?branch=master
     :target: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform
 
-.. image:: https://img.shields.io/appveyor/ci/itkrobot/itkpolartransform.svg
+.. |AppVeyor| image:: https://img.shields.io/appveyor/ci/itkrobot/itkpolartransform.svg
     :target: https://ci.appveyor.com/project/itkrobot/itkpolartransform
+
+=========== =========== ===========
+   Linux      macOS       Windows
+=========== =========== ===========
+|CircleCI|  |TravisCI|  |AppVeyor|
+=========== =========== ===========
 
 Overview
 --------
