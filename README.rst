@@ -1,14 +1,20 @@
 ITKPolarTransform
-=================================
+=================
 
-.. image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform.svg?style=shield
+.. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform.svg?style=shield
     :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform
 
-.. image:: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform.svg?branch=master
+.. |TravisCI| image:: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform.svg?branch=master
     :target: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform
 
-.. image:: https://img.shields.io/appveyor/ci/itkrobot/itkpolartransform.svg
+.. |AppVeyor| image:: https://img.shields.io/appveyor/ci/itkrobot/itkpolartransform.svg
     :target: https://ci.appveyor.com/project/itkrobot/itkpolartransform
+
+=========== =========== ===========
+   Linux      macOS       Windows
+=========== =========== ===========
+|CircleCI|  |TravisCI|  |AppVeyor|
+=========== =========== ===========
 
 Overview
 --------
@@ -36,6 +42,16 @@ are available for Linux, macOS, and Windows. They can be installed with::
   python -m pip install --upgrade pip
   python -m pip install itk-polartransform
 
+
+C++
+^^^
+
+Since ITK 5.0.0, this module is available in the ITK source tree as a Remote
+module. To enable it, set::
+
+  Module_PolarTransform:BOOL=ON
+
+in ITK's CMake build configuration.
 
 License
 -------
