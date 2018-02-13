@@ -21,7 +21,7 @@
 
 int itkPolarTransformTest( int, char *[] )
 {
-  const unsigned int Dimension = 4;
+  constexpr unsigned int Dimension = 4;
   const double epsilon = 1e-10;
 
   /* Create 3D polar transforms and print them. */
