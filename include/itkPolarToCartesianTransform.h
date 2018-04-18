@@ -56,6 +56,8 @@ class ITK_TEMPLATE_EXPORT PolarToCartesianTransform:
   public Transform< TParametersValueType, NDimensions, NDimensions >
 {
 public:
+  ITK_DISALLOW_COPY_AND_ASSIGN(PolarToCartesianTransform);
+
   /** Standard class type alias. */
   using Self = PolarToCartesianTransform;
   using Superclass = Transform< TParametersValueType, NDimensions, NDimensions >;
@@ -158,8 +160,6 @@ protected:
   void PrintSelf(std::ostream &os, Indent indent) const override;
 
 private:
-  ITK_DISALLOW_COPY_AND_ASSIGN(PolarToCartesianTransform);
-
   OutputPointType m_Center;
 }; //class PolarToCartesianTransform
 
