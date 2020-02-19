@@ -152,6 +152,14 @@ public:
   itkSetMacro( Center, OutputPointType );
   itkGetConstReferenceMacro( Center, OutputPointType );
 
+  /** Enable/Disable to use constant arc increment instead of constant angular increment.
+   *
+   * Defaults to Off
+   */
+  itkSetMacro(ConstArcIncr, bool);
+  itkGetMacro(ConstArcIncr, bool);
+  itkBooleanMacro(ConstArcIncr);
+
 protected:
   PolarToCartesianTransform();
   ~PolarToCartesianTransform() override;
@@ -161,6 +169,7 @@ protected:
 
 private:
   OutputPointType m_Center;
+  bool m_ConstArcIncr = false;
 }; //class PolarToCartesianTransform
 
 }  // namespace itk
