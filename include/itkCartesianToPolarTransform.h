@@ -1,6 +1,6 @@
 /*=========================================================================
  *
- *  Copyright Insight Software Consortium
+ *  Copyright NumFOCUS
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -47,31 +47,30 @@ namespace itk
  *
  * Dimension must be at least 2.
  *
- * \author Jakub Bican, Department of Image Processing, Institute of Information Theory and Automation, Academy of Sciences of the Czech Republic.
+ * \author Jakub Bican, Department of Image Processing, Institute of Information Theory and Automation, Academy of
+ * Sciences of the Czech Republic.
  *
  * \ingroup Transforms
  * \ingroup PolarTransform
  */
-template <
-    typename TParametersValueType=double,          // Data type for scalars (float or double)
-    unsigned int NDimensions=3>        // Number of dimensions
-class ITK_TEMPLATE_EXPORT CartesianToPolarTransform :
-          public Transform< TParametersValueType, NDimensions, NDimensions >
+template <typename TParametersValueType = double, // Data type for scalars (float or double)
+          unsigned int NDimensions = 3>           // Number of dimensions
+class ITK_TEMPLATE_EXPORT CartesianToPolarTransform : public Transform<TParametersValueType, NDimensions, NDimensions>
 {
 public:
   ITK_DISALLOW_COPY_AND_ASSIGN(CartesianToPolarTransform);
 
   /** Standard class type alias. */
   using Self = CartesianToPolarTransform;
-  using Superclass = Transform< TParametersValueType, NDimensions, NDimensions >;
-  using Pointer = SmartPointer< Self >;
-  using ConstPointer = SmartPointer< const Self >;
+  using Superclass = Transform<TParametersValueType, NDimensions, NDimensions>;
+  using Pointer = SmartPointer<Self>;
+  using ConstPointer = SmartPointer<const Self>;
 
   /** New macro for creation of through the object factory.*/
-  itkNewMacro( Self );
+  itkNewMacro(Self);
 
   /** Run-time type information (and related methods). */
-  itkTypeMacro( CartesianToPolarTransform, Transform );
+  itkTypeMacro(CartesianToPolarTransform, Transform);
 
   /** Dimension of the domain space. */
   static constexpr unsigned int SpaceDimension = NDimensions;
@@ -106,61 +105,69 @@ public:
    * This method transforms first two dimensions of a point from cartesian
    * coordinates to polar coordinates <alpha,radius>.
    */
-  OutputPointType TransformPoint(const InputPointType  &point ) const override;
+  OutputPointType
+  TransformPoint(const InputPointType & point) const override;
 
   /**  Method to transform a vector - not applicable for this type of transform. */
-  OutputVectorType TransformVector(const InputVectorType &) const override
-    {
+  OutputVectorType
+  TransformVector(const InputVectorType &) const override
+  {
     itkExceptionMacro(<< "Method not applicable for this type of transform.");
     return OutputVectorType();
-    }
+  }
 
   /** Method to transform a vnl_vector - not applicable for this type of transform. */
-  OutputVnlVectorType TransformVector(const InputVnlVectorType &) const override
-    {
+  OutputVnlVectorType
+  TransformVector(const InputVnlVectorType &) const override
+  {
     itkExceptionMacro(<< "Method not applicable for this type of transform.");
     return OutputVnlVectorType();
-    }
+  }
 
   /** Method to transform a vector - not applicable for this type of transform. */
-  typename Superclass::OutputVectorPixelType TransformVector(
-      const typename Superclass::InputVectorPixelType &, const InputPointType &) const override
-    {
+  typename Superclass::OutputVectorPixelType
+  TransformVector(const typename Superclass::InputVectorPixelType &, const InputPointType &) const override
+  {
     itkExceptionMacro(<< "Method not applicable for this type of transform.");
     return typename Superclass::OutputVectorPixelType();
-    }
+  }
 
   using Superclass::TransformVector;
 
   /** Method to transform a CovariantVector - not applicable for this type of transform. */
-  OutputCovariantVectorType TransformCovariantVector(
-    const InputCovariantVectorType &) const override
-    {
+  OutputCovariantVectorType
+  TransformCovariantVector(const InputCovariantVectorType &) const override
+  {
     itkExceptionMacro(<< "Method not applicable for this type of transform.");
     return OutputCovariantVectorType();
-    }
+  }
 
   using Superclass::TransformCovariantVector;
 
-  void ComputeJacobianWithRespectToParameters( const InputPointType &, JacobianType & ) const override
-    {
+  void
+  ComputeJacobianWithRespectToParameters(const InputPointType &, JacobianType &) const override
+  {
     itkExceptionMacro(<< "Method not implemented yet.");
-    }
+  }
 
-  void SetParameters(const ParametersType &) override {}
+  void
+  SetParameters(const ParametersType &) override
+  {}
 
-  void SetFixedParameters(const ParametersType &) override {}
+  void
+  SetFixedParameters(const ParametersType &) override
+  {}
 
   /** Set the location of the center of the polar coordinate system. */
-  itkSetMacro( Center, InputPointType );
-  itkGetConstReferenceMacro( Center, InputPointType );
+  itkSetMacro(Center, InputPointType);
+  itkGetConstReferenceMacro(Center, InputPointType);
 
-  /** Set an angular offset for the polar coordinate transform. 
+  /** Set an angular offset for the polar coordinate transform.
    *
    * Defaults to 0.0
    */
-  itkSetMacro( AngleOffset, typename OutputPointType::ValueType );
-  itkGetConstReferenceMacro( AngleOffset, typename OutputPointType::ValueType );
+  itkSetMacro(AngleOffset, typename OutputPointType::ValueType);
+  itkGetConstReferenceMacro(AngleOffset, typename OutputPointType::ValueType);
 
   /** Enable/Disable to use constant arc increment instead of constant angular increment.
    *
@@ -175,19 +182,20 @@ protected:
   ~CartesianToPolarTransform() override;
 
   /** Print contents of an CartesianToPolarTransform. */
-  void PrintSelf(std::ostream &os, Indent indent) const override;
+  void
+  PrintSelf(std::ostream & os, Indent indent) const override;
 
 private:
-  InputPointType m_Center;
+  InputPointType                      m_Center;
   typename OutputPointType::ValueType m_AngleOffset = 0;
-  bool m_ConstArcIncr = false;
-}; //class CartesianToPolarTransform
+  bool                                m_ConstArcIncr = false;
+}; // class CartesianToPolarTransform
 
-}  // namespace itk
+} // namespace itk
 
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkCartesianToPolarTransform.hxx"
+#  include "itkCartesianToPolarTransform.hxx"
 #endif
 
 #endif
