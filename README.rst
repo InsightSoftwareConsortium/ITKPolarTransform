@@ -1,6 +1,8 @@
 ITKPolarTransform
 =================
 
+.. image:: https://github.com/InsightSoftwareConsortium/ITKPolarTransform/workflows/Build,%20test,%20package/badge.svg
+
 .. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform.svg?style=shield
     :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform
 
