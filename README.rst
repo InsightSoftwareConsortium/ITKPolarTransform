@@ -3,21 +3,6 @@ ITKPolarTransform
 
 .. image:: https://github.com/InsightSoftwareConsortium/ITKPolarTransform/workflows/Build,%20test,%20package/badge.svg
 
-.. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform.svg?style=shield
-    :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKPolarTransform
-
-.. |TravisCI| image:: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform.svg?branch=master
-    :target: https://travis-ci.org/InsightSoftwareConsortium/ITKPolarTransform
-
-.. |AppVeyor| image:: https://img.shields.io/appveyor/ci/itkrobot/itkpolartransform.svg
-    :target: https://ci.appveyor.com/project/itkrobot/itkpolartransform
-
-=========== =========== ===========
-   Linux      macOS       Windows
-=========== =========== ===========
-|CircleCI|  |TravisCI|  |AppVeyor|
-=========== =========== ===========
-
 Overview
 --------
 
