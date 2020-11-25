@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='itk-polartransform',
-    version='1.1.1',
+    version='1.1.2',
     author='Insight Software Consortium',
     author_email='itk+community@discourse.itk.org',
     packages=['itk'],
@@ -44,6 +44,6 @@ setup(
     keywords='ITK InsightToolkit',
     url=r'https://itk.org/',
     install_requires=[
-        r'itk-core>=5.1.1'
+        r'itk-core>=5.1.1.post1'
     ]
     )
