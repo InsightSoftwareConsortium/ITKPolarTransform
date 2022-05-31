@@ -9,13 +9,13 @@ Overview
 This is a module for the `Insight Toolkit (ITK) <https://www.itk.org>`_
 to transform from cartesian to polar coordinate systems and back.
 
-For more information, see the `Insight Journal article <http://hdl.handle.net/1926/342>`_::
+For more information, see the `Insight Journal article <https://hdl.handle.net/1926/342>`_::
 
   Bican J.
   Polar Transforms for ITK
   The Insight Journal. July-December. 2006.
-  http://hdl.handle.net/1926/342
-  http://insight-journal.org/browse/publication/130
+  https://hdl.handle.net/1926/342
+  https://insight-journal.org/browse/publication/130
 
 Installation
 ------------
