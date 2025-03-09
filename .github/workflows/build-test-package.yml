@@ -12,4 +12,3 @@ jobs:
     with:
       test-notebooks: false
     secrets:
-      pypi_password: ${{ secrets.pypi_password }}
